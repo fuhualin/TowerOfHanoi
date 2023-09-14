@@ -1,0 +1,208 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1300px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.jumbotron{
+  background: white;
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.page-header{
+  margin-top: 0px;
+}
+
+.footer{
+  margin-top:  40px;
+}
+
+.horizontal-center{
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-right{
+  display: flex;
+  justify-content: right;
+}
+
+.horizontal-left{
+  display: flex;
+  justify-content: left;
+}
+
+.top-margin20{
+  margin-top:20px;
+}
+
+.right-margin10{
+  margin-right: 10px;
+}
+
+
+
+.ui-slider .ui-slider-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+#speed-slider{
+  float: left;
+  clear: left;
+  width: 150px;
+  margin: 10px;
+}
+
+#speed-slider .ui-slider-range {
+  background: #093145; 
+}
+
+#speed-slider .ui-slider-handle {
+  border-color: #729fcf;
+}
+
+pre {
+  font-family: Consolas,monospace;
+}
+
+.minimum{
+  background-color: red;
+}
+
+.default{
+  background-color: cyan;
+}
+
+.sorted{
+  background-color: blue;
+}
+
+.compare{
+  background-color: green;
+}
+
+.swapping{
+  background-color: yellow;
+}
+
+.inactive{
+  background-color: lightgray;
+}
+
+thead{    
+  background-color: white;
+  
+}
+
+.test{
+  background-color: green;
+}
+
+
+.tooltip {
+  position: absolute;
+  text-align: left;
+  width: auto;
+  height: auto;
+  padding: 3px 5px 3px 5px;
+  font: 1em sans-serif;
+  border: 0px;
+  border-radius: 5px;
+  pointer-events: none;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: lightgray;
+}
+
+.highlight-text{
+  background-color: black;
+  color: white;
+}
+
+.lineNo-background{
+  background-color:white;
+  color: black;
+  overflow: scroll;
+  height: auto;
+  float:left;
+  min-height: 400px;
+  max-height: 400px;
+  width: 40px;
+}
+
+.code-background{
+  background-color:#093145;
+  color: white;
+  overflow: scroll;
+  height: auto;
+  min-height: 400px;
+  max-height: 400px;
+}
+
+.info-background{
+  background-color: white;
+  color: black;
+  height:auto;
+  overflow: scroll;
+  max-height: 500px;
+}
