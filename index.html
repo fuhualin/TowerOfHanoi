@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AlgoVis</title>
+    <link rel="stylesheet" href="./cssFiles/bootstrap.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./cssFiles/style.css">
+
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="./jsFiles/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+    <!-- <script src="/jsFiles/handlebars-v4.0.10.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+</head>
+
+<body>
+<!--starting div containing global container -->
+<div class = "container"> 
+
+    <!--starting div containing global row-->
+    <div class = "row">
+
+        <!-- starting div containing visualization and code> -->
+        <div class = "row">
+
+            <!-- start of div containing visualization -->
+            <div class = "col-lg-7" id = "visual-area">
+
+                <table class = " header info-table table table-striped table-hover">
+                    <tbody>
+                        <tr>
+                            <td><h4 id="algo-name">Tower Of Hanoi</h4></td>
+                            <td class = "horizontal-right"><a href = "#zoom" data-toggle="collapse"><button id="expand" class = "btn btn-default"><span class="glyphicon glyphicon-resize-full"></span></button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+       
+                <label class = "horizontal-center" id="action"></label>
+                <div id="visualBox"></div>
+                <!--starting div containing the controls-->
+                <div id = "controls" class = "horizontal-center top-margin20">
+                    <div>
+                        <button id="text-show" class="btn btn-default"><span>T</span></button>
+                        <button id="stepback" class="btn btn-default"><span class="glyphicon glyphicon-step-backward"></span></button>
+                        
+                        <button id="play" class="btn btn-default"><span class="glyphicon glyphicon-play"></span></button>
+
+                        <button id="stepforward" class="btn btn-default"><span class="glyphicon glyphicon-step-forward"></span></button>
+
+                        <Button id = "stop" class="btn btn-default right-margin10"><span class="glyphicon glyphicon-stop"></span></button>
+                        
+                    </div>
+                    <div id="speed-slider"></div>
+                </div> <!-- ending div containing controls-->
+
+                <!--starting div containing colortable and element control and control table-->
+                <div class = "row container">
+                    <!-- starting div containing color table-->
+                    <div id = "color-table" class = "col-md-2">
+                        <table class = "info-table table table-bordered table-striped table-hover top-margin20">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td class = "default"  colspan = "1"></td>
+                                    <td class = "text-center" >Default</td>
+                                </tr>
+                                <tr >
+                                    <td class = "sorted" colspan = "1"></td>
+                                    <td class = "text-center">Sorted</td>
+                                </tr>
+                                <tr >
+                                    <td class = "minimum" colspan = "1"></td>
+                                    <td class = "text-center">Pivot</td>
+                                </tr>
+                                <tr >
+                                    <td class = "compare" colspan = "1"></td>
+                                    <td class = "text-center">Compare</td>
+                                </tr>
+                                <tr >
+                                    <td class = "swapping" colspan = "1"></td>
+                                    <td class = "text-center">Swapping</td>
+                                </tr>
+                                <tr >
+                                    <td class = "inactive" colspan = "1"></td>
+                                    <td class = "text-center">Inactive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!--ending div containing color table-->
+                    <!--starting div containing element control and control table-->
+                    <div id = "element-control" class = "col-md-5">
+                        <!--starting div containing randommize and clear-->
+                        <div class = "horizontal-center top-margin20 "> 
+                            <div class="input-group input-group-md col-md-3 right-margin10 hidden">
+                                <span class="input-group-addon">Speed</span><input type="text" class = "form-control" value="200" id="speed"></input><span class="input-group-addon">ms</span> 
+                            </div>
+
+                            <div class="input-group input-group-md col-md-4 right-margin10">
+                                <span class="input-group-addon">Elements</span><input type="text" value="5" id="elements" class="form-control"></input>
+                            </div>
+
+                            <button id="random" class = "btn btn-default right-margin10">Randomize</button>
+                            <button id="clear" class = "btn btn-default">Clear</button>
+                            
+                        </div> <!--ending div containing randomize and clear -->
+                        <!--starting div containing element add control-->
+                        <div class = "horizontal-center top-margin20">
+                            <div class="input-group input-group-md col-md-8">
+                                <span class="input-group-btn">
+                                <button id = "add" class = "btn btn-default">Add Element</button>
+                                </span>
+                                <input type = "text" value = "0" id = "addtextfield" size = "5" class = "form-control"></input>
+                                
+                                <span class="input-group-addon">or</span>
+                                <span class="input-group-btn">
+                                    <button id = "addrandom" class = "btn btn-default">Random</button>
+                                </span>
+                            </div>
+                        </div> <!--ending div containing element add control-->
+                        <!--starting table containing control table-->
+                        <table class = "info-table table table-bordered table-striped table-hover top-margin20">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class = "text-center"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-step-backward"></span></button></td>
+                                    <td class = "text-center"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-play"></span></button></td>
+                                    <td class = "text-center"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-step-forward"></span></button></td>
+                                    <td class = "text-center"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pause"></span></button></td>
+                                    <td class = "text-center"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-stop"></span></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">Step Back</td>
+                                    <td class="text-center">Play</td>
+                                    <td class="text-center">Step Forward</td>
+                                    <td class="text-center">Pause</td>
+                                    <td class="text-center">Stop</td>
+                                </tr>
+                            </tbody>
+                        </table> <!--ending table containing control table-->
+                    </div> <!--ending div containing element control and control table-->
+                </div> <!--ending div containing colortable and element control and control table-->
+            </div> <!-- end of div containing visualization -->
+
+            <!-- start of div containing code display -->
+            <div id = "zoom" class = "col-lg-5 collapse in"> 
+                <ul class = "nav nav-pills header">
+                    <li class="active"><a href="#pseudocode" data-toggle="pill" id="pseudo-tab">Pseudo</a></li>
+                    <li><a href="#cppcode" data-toggle="pill" id="cpp-tab">C++</a></li>
+                    <li><a href="#javacode" data-toggle="pill" id="java-tab">Java</a></li>
+                    <li><a href="#pythoncode" data-toggle="pill" id="python-tab">Python</a></li>
+                </ul>
+                 <pre>
+                    <div id="display-area" class = "tab-content code-background">
+                        <div id="pseudocode" class="tab-pane fade in active">
+                        </div>
+                        <div id="cppcode" class="tab-pane fade">
+                        </div>
+                        <div id="javacode" class="tab-pane fade">
+                        </div>
+                        <div id="pythoncode" class="tab-pane fade">
+                        </div>
+                    </div>
+                </pre>
+            </div>  <!-- end of div containing code display-->
+
+        </div> <!-- end of div containing visualization and code -->  
+
+        <div class = "row top-margin20"> <!-- start of div containing algo-info table -->
+            <div class = "col-lg-12">
+                <table class = "table table-bordered table-striped table-hover">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class = "col-lg-4 text-center">Algorithm</th>
+                            <th class = "col-lg-4 text-center">Time Complexity</th>
+                            <th class = "col-lg-4 text-center">Space Complexity</th>
+                        </tr>
+
+                        <tr>
+                            <td class="text-center">Tower Of Hanoi</td>
+                            <td class="text-center">O(n<sup>2</sup>)</td>
+                            <td class="text-center">O(n)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> <!-- end of div containing algo-info table -->
+
+    </div> <!--end of div containing global row-->
+</div> <!-- end of div global container -->
+
+<div>
+    <br/><br/>
+    <a href = "/">Menu</a>
+</div>
+<script type = "text/javascript" src = "./jsFiles/recursion/createData.js"></script>
+<script type = "text/javascript" src = "./jsFiles/recursion/controls.js"></script>
+<script type = "text/javascript" src = "./jsFiles/recursion/displayCode.js"></script>
+<script type = "text/javascript" src = "./jsFiles/recursion/towerOfHanoi.js"></script>
+
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="page-views">Page Views: {{views}}</p>
+            <p>&copy; Athabasca University</p>
+        </footer>
+
+    </div> <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./jsFiles/bootstrap.js"></script>
+</body>
+
+</html>
